@@ -36,7 +36,7 @@ class Course():
         #Don't think we need to return anything here
 
 
-a = Course("henry", "now", "The Class", -4, "There", 2**8, 3**4)
-print(a)
+#a = Course("henry", "now", "The Class", -4, "There", 2**8, 3**4)
+#print(a)
 
     
