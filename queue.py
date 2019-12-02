@@ -9,6 +9,7 @@ class Queue():
 
     def enqueue(self, item):
         self.items.append(item)
+
     def dequeue(self):
         if len(self.items) is not 0:
             a = self.items[0]

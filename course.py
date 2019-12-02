@@ -2,7 +2,7 @@
 import queue
 
 class Course():
-    def __init__(self, _prof, _time, _name, _id, _location, _max_students, _credits = 4, _code, _start_date):
+    def __init__(self, _prof, _time, _name, _id, _location, _max_students, _code, _start_date, _credits = 4):
         self.prof = _prof
         self.time = _time  #This should probably be stored as a string, although it could be in military time
         self.name = _name
@@ -36,10 +36,13 @@ class Course():
                 self.current_students.pop(i)
                 found = True
             i += 1
+        if found:
+            if self.queue_to_enter.is_empty():
+                pass
+            else:
+                self.add_student(self.queue_to_enter.dequeue())
         #Don't think we need to return anything here
 
 
-#a = Course("henry", "now", "The Class", -4, "There", 2**8, 3**4)
-#print(a)
+a = Course("henry", "now", "The Class", -4, "There", 2**8, 3**4, "CS 150", "F2019")
 
-    

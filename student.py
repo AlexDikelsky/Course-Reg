@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-
 class Student():  
     def __init__(self, _name, _courses, _unused_id):
         self.name = _name        #string
