@@ -13,8 +13,9 @@ class Student():
     def add_course(self, new_course):
         self.courses.append(new_course)
 
-    def drop_course(self, course_to_remove):
-        self.courses.remove(course_to_remove) #Not sure if the remove method works here, make sure to test this later
+#    def drop_course(self, course_to_remove):
+#        self.courses.remove(course_to_remove) #Not sure if the remove method works here, make sure to test this later
+# Actually don't think this should be here, should be defined in the course thing
 
     #def delete_student(self):  This should probably be in the studentlist class
     def get_credits(self):
