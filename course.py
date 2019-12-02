@@ -2,7 +2,7 @@
 import queue
 
 class Course():
-    def __init__(self, _prof, _time, _name, _id, _location, _max_students, _credits = 4):
+    def __init__(self, _prof, _time, _name, _id, _location, _max_students, _credits = 4, _code, _start_date):
         self.prof = _prof
         self.time = _time  #This should probably be stored as a string, although it could be in military time
         self.name = _name
@@ -12,6 +12,8 @@ class Course():
         self.current_students = []  #this is a list of students
         self.credits = _credits
         self.queue_to_enter = queue.Queue()
+        self.code = _code
+        self.start_date = _start_date
 
     def __str__(self):
         return f"Professor: {self.prof},\nTime: {self.time},\nName: {self.name},\nID: {str(self.id)},\n" + \
@@ -33,6 +35,7 @@ class Course():
             if self.current_students[i].id is id_no:
                 self.current_students.pop(i)
                 found = True
+            i += 1
         #Don't think we need to return anything here
 
 
