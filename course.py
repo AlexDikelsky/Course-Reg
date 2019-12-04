@@ -2,7 +2,17 @@
 import queue
 
 class Course():
-    def __init__(self, _prof, _time, _name, _id, _location, _max_students, _code, _start_date, _credits = 4):
+    def __init__(self, _prof, _time, _name, _id, _location, _max_students, _code, _start_date, _credits = 4, ):
+        #_prof = Professor  string
+        #_time = "1:30-2:30 M/W/F", string
+        #_title = "Algorithms and Data Structures", string
+        #_dept = "CS", String
+        #_number = "160", String
+        #_location = "Olin 202"
+        #_max_students = 25 Int
+        #_term = "F2019" String "S2019"
+        #_credits = 32 Int
+        #self, _prof, _time, _title, _dept, _number, _location, _max_students, _term, _credits = 4)
         self.prof = _prof
         self.time = _time  #This should probably be stored as a string, although it could be in military time
         self.name = _name
@@ -43,6 +53,6 @@ class Course():
                 self.add_student(self.queue_to_enter.dequeue())
         #Don't think we need to return anything here
 
-
-a = Course("henry", "now", "The Class", -4, "There", 2**8, 3**4, "CS 150", "F2019")
+a = Course("Shad", "1:30-2:30", "Algorithms and Data Structures", "CS160", "Olin 202", 20, "CS 160", "August 21, 2019")
+print(a)
 
