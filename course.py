@@ -4,7 +4,7 @@ import student
 import queue
 
 class Course():  
-    def __init__(self, _prof, _time, _location, _max_students, _term, _section, master_course): #{{{
+    def __init__(self, _prof, _time, _location, _max_students, _term, _section, master_course): #{{{  O(1)
         #_prof = Professor  string
         #_time = "1:30-2:30 M/W/F", string
         #_title = "Algorithms and Data Structures", string
@@ -36,17 +36,17 @@ class Course():
         self.course_id = self.dept + self.number + "-" +  self.section
         #}}}
 
-    def __str__(self):
+    def __str__(self): #O(1)
         return self.course_id
 
-    def add_student(self, student):
-        if len(self.current_students) >= self.max_students:  #If the class is full
+    def add_student(self, student):  #O(1)
+        if len(self.current_students) >= self.max_students:  #If the class is full          O(1)
             self.queue_to_enter.enqueue(student)   #Add a student to the overflow queue
         else:
-            self.current_students.append(student)  #If it's not, add them to the course
+            self.current_students.append(student)  #If it's not, add them to the course         O(1)
             student.add_course(self)  #also remember to add the student to the course
 
-    def remove_student(self, student_id):
+    def remove_student(self, student_id):  #O(n) because you need to go through the whole list at worst
         #have to use a while loop here because you need to delete a particular
         #element of the list
         found = False

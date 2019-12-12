@@ -5,23 +5,23 @@ import sorter
 import search
 
 class MasterListCourses(): 
-    def __init__(self):
+    def __init__(self):  #O(1)
         self.course_list = []
 
-    def __str__(self):
+    def __str__(self):  #O(1)
         return str(self.course_list)
     
-    def add_course(self, new_course):
+    def add_course(self, new_course):  #O(1)
         self.course_list.append(new_course)
 
-    def find_course(self, to_add):
+    def find_course(self, to_add):     #O(log(n))
         #Creates a list of course "ids"
         li = [x.title + x.dept + str(x.number) for x in self.course_list]
         #Creates id for thing to look for
         item = to_add.title + to_add.dept + str(to_add.number)
         #print(li, item)
         #Search
-        x = search.binary_search(sorter.mergesort(li), \
+        x = search.binary_search(sorter.mergesort(li), \  #This has O(log(n)) complexity
                 len(li)//2, len(li), 0, item)
         if x:
             return to_add
@@ -29,7 +29,7 @@ class MasterListCourses():
             print("Attempted to add a course not in the master list")
             return None
 
-    def remove_course(self, to_remove):
+    def remove_course(self, to_remove):  #O(n) complexity because it goes through the whole list
         i = 0
         found = False
         while i < len(self.course_list):  #This measures equality between the removed one and the to remove one

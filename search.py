@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-def binary_search(li, index, upper_bound, lower_bound, item):
+def binary_search(li, index, upper_bound, lower_bound, item): #O(log(n))
     if li[index] == item:
         return True
     elif abs(upper_bound - lower_bound) <= 1:
