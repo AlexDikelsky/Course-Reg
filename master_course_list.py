@@ -2,6 +2,7 @@
 
 import course
 import sorter
+import search
 
 class MasterListCourses(): 
     def __init__(self):
@@ -14,30 +15,19 @@ class MasterListCourses():
         self.course_list.append(new_course)
 
     def find_course(self, to_add):
+        #Creates a list of course "ids"
         li = [x.title + x.dept + str(x.number) for x in self.course_list]
+        #Creates id for thing to look for
         item = to_add.title + to_add.dept + str(to_add.number)
-        x =  self.binary_search(sorter.mergesort(li), \
+        #print(li, item)
+        #Search
+        x = search.binary_search(sorter.mergesort(li), \
                 len(li)//2, len(li), 0, item)
         if x:
-            return True
+            return to_add
         else:
             print("Attempted to add a course not in the master list")
-            return False
-
-
-    def binary_search(self, li, index, upper_bound, lower_bound, item):
-        #print(index, upper_bound, lower_bound, item)
-        if li[index] == item:
-            return True
-        elif abs(upper_bound - lower_bound) <= 1:
-            return False
-        elif li[index] > item:
-            return self.binary_search(li, index - (upper_bound-lower_bound)//2, index, lower_bound, item)
-        elif li[index] < item:
-            return self.binary_search(li, index + (upper_bound-lower_bound)//2, upper_bound, index, item)
-        else:
-            return False
-
+            return None
 
     def remove_course(self, to_remove):
         i = 0
