@@ -21,7 +21,8 @@ class MasterListCourses():
         item = to_add.title + to_add.dept + str(to_add.number)
         #print(li, item)
         #Search
-        x = search.binary_search(sorter.mergesort(li), \  #This has O(log(n)) complexity
+        #This has O(log(n)) complexity
+        x = search.binary_search(sorter.mergesort(li), \
                 len(li)//2, len(li), 0, item)
         if x:
             return to_add
