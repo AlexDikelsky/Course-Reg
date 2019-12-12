@@ -58,6 +58,10 @@ print()
 for c in j.courses:
     print("Laura: ", c)
 
+print()
+i.list_courses("dept")
+j.list_courses("dept")
+
 
 #for c in master.course_list:
 #    print(c)

@@ -12,9 +12,11 @@ class Student():
     def __str__(self):
         return f"Name = {self.name},\nCourses = {str(self.courses)},\nID = {str(self.id)}"
 
-    def list_courses(self, ordering):
+    def list_courses(self, ordering = None):
         if ordering is "dept":
-            print(sorter.bubblesort(self.courses.dept))
+            print(sorter.bubblesort([x.dept for x in self.courses]))
+        if ordering is None:
+            print(sorter.mergesort([x.dept for x in self.courses]))
 
     def add_course(self, new_course):
         self.courses.append(new_course)

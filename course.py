@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 
 import student
+import queue
 
 class Course():  
-    def __init__(self, _prof, _time, _location, _max_students, _term, _section, master_course):
+    def __init__(self, _prof, _time, _location, _max_students, _term, _section, master_course): #{{{
         #_prof = Professor  string
         #_time = "1:30-2:30 M/W/F", string
         #_title = "Algorithms and Data Structures", string
@@ -33,6 +34,7 @@ class Course():
         self.queue_to_enter = queue.Queue()   
         
         self.course_id = self.dept + self.number + "-" +  self.section
+        #}}}
 
     def __str__(self):
         return self.course_id
