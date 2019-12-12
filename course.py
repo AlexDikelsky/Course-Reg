@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-import queue
 
-class Course():
-    def __init__(self, _prof, _time, _name, _id, _location, _max_students, _code, _start_date, _credits = 4, ):
+import student
+
+class Course():  
+    def __init__(self, _prof, _time, _location, _max_students, _term, _section, master_course):
         #_prof = Professor  string
         #_time = "1:30-2:30 M/W/F", string
         #_title = "Algorithms and Data Structures", string
@@ -12,38 +13,46 @@ class Course():
         #_max_students = 25 Int
         #_term = "F2019" String "S2019"
         #_credits = 32 Int
-        #self, _prof, _time, _title, _dept, _number, _location, _max_students, _term, _credits = 4)
+        
+        #Course Information
         self.prof = _prof
-        self.time = _time  #This should probably be stored as a string, although it could be in military time
-        self.name = _name
-        self.id = _id
+        self.time = _time
+        self.term = _term
         self.loc = _location
         self.max_students = _max_students  #integer
+        self.credits = master_course.credits
+        self.section = _section
+
+        #Names
+        self.title = master_course.title
+        self.dept = master_course.dept
+        self.number = master_course.number
+
+        #Enrollment
         self.current_students = []  #this is a list of students
-        self.credits = _credits
-        self.queue_to_enter = queue.Queue()
-        self.code = _code
-        self.start_date = _start_date
+        self.queue_to_enter = queue.Queue()   
+        
+        self.course_id = self.dept + self.number + "-" +  self.section
 
     def __str__(self):
-        return f"Professor: {self.prof},\nTime: {self.time},\nName: {self.name},\nID: {str(self.id)},\n" + \
-        f"Location: {self.loc},\nMax: {int(self.max_students)},\nCurrent: {int(self.current_students)}," + \
-        f"\nQueue to enter: {self.queue_to_enter}"
+        return self.course_id
 
     def add_student(self, student):
-        if len(current_students) > max_students:  #If the class is full
-            self.queue_to_enter.enqueue(student)  
+        if len(self.current_students) >= self.max_students:  #If the class is full
+            self.queue_to_enter.enqueue(student)   #Add a student to the overflow queue
         else:
-            self.current_students.append(student)
+            self.current_students.append(student)  #If it's not, add them to the course
+            student.add_course(self)  #also remember to add the student to the course
 
-    def remove_student(self, id_no):
+    def remove_student(self, student_id):
         #have to use a while loop here because you need to delete a particular
         #element of the list
         found = False
         i = 0
         while i < len(self.current_students) and not found:
-            if self.current_students[i].id is id_no:
-                self.current_students.pop(i)
+            if self.current_students[i].id is student_id:
+                stu = self.current_students.pop(i)
+                stu.drop_course(self)
                 found = True
             i += 1
         if found:
@@ -52,7 +61,4 @@ class Course():
             else:
                 self.add_student(self.queue_to_enter.dequeue())
         #Don't think we need to return anything here
-
-a = Course("Shad", "1:30-2:30", "Algorithms and Data Structures", "CS160", "Olin 202", 20, "CS 160", "August 21, 2019")
-print(a)
-
+    
