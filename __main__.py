@@ -61,8 +61,9 @@ print()
 for c in j.courses:
     print("Laura: ", c)
 
-print()
+print("Alex Course")
 i.list_courses("dept")
+print("Laura Course")
 j.list_courses("dept")
 
 
