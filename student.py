@@ -16,11 +16,17 @@ class Student():
         if ordering is "dept":
             print(sorter.bubblesort([x.dept for x in self.courses]))  #O(n²)
         if ordering is None:
-            print(sorter.mergesort([x.dept for x in self.courses]))  #O(log(n))
+            print(sorter.mergesort([x.number for x in self.courses]))  #O(log(n))
 
     def add_course(self, new_course):  #O(1)
         self.courses.append(new_course)
 
-    def drop_course(self, course_to_remove):  #Don't use this anymore, just remove student from course
-        self.courses.remove(course_to_remove) #Not sure if the remove method works here, make sure to test this later
+    def count_credits(self):  #O(n) comple
+        total = 0
+        for i in self.courses:
+            total += i.credits 
+        return total
 
+
+    #def drop_course(self, course_to_remove):  #Don't use this anymore, just remove student from course
+    #    self.courses.remove(course_to_remove) #Not sure if the remove method works here, make sure to test this later

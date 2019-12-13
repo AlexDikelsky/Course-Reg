@@ -2,6 +2,7 @@
 
 import student
 import queue
+import sorter
 
 class Course():  
     def __init__(self, _prof, _time, _location, _max_students, _term, _section, master_course): #{{{  O(1)
@@ -63,4 +64,7 @@ class Course():
             else:
                 self.add_student(self.queue_to_enter.dequeue())
         #Don't think we need to return anything here
-    
+
+    def get_students(self): #O(1)
+        return sorter.mergesort([x.name for x in self.current_students])
+
